@@ -25,4 +25,25 @@ router.post('/', ensureAuth, async (req, res) => {
   }
 })
 
+/////////////////////////////
+// @descrip   Show All Thoughts
+// @route     POST /stories
+router.get('/', ensureAuth, async (req, res) => {
+  try {
+    const thoughts = await Thought.find({ status: 'public' })
+    .populate('user')
+    .sort({ createdAt: 'desc'})
+    .lean()
+
+    console.log(thoughts)
+
+    res.render('thoughts/index', {
+      thoughts,
+    })
+  } catch (error) {
+    console.error(error)
+    res.render('error/500')
+  }
+})
+
 module.exports = router

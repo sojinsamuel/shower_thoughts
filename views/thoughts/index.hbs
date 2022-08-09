@@ -1,0 +1,26 @@
+<h1>Thoughts</h1>
+<section class="row">
+    {{#each thoughts}}
+    <main class="col s12 m4">
+        <article class="card">
+            <div class="card-image">
+                {{!-- edit --}}
+            </div>
+            <section class="card-content center-align">
+                <h5>{{title}}</h5>
+                <p>{{stripHTMLTags (shortenDisplay body 100)}}</p>
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/thoughts/user/{{user._id}}">{{user.displayName}}</a>
+                </div>
+            </section>
+            <div class="card-action center-align">
+                <a href="/thoughts/{{_id}}" class="btn grey">Read More</a>
+            </div>
+        </article>
+    </main>
+    {{else}}
+    <p>No thoughts to display</p>
+    {{/each}}
+</section>

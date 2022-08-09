@@ -27,10 +27,19 @@ app.use(express.json())
 //logging
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
-
+//handlebar helpers
+const { formatDate, stripHTMLTags, shortenDisplay } = require('./helpers/hbs')
 
 //handlebars
-app.engine('.hbs', exphbs.engine({ extname: '.hbs' }));
+app.engine('.hbs', exphbs.engine({ 
+  extname: '.hbs', 
+  defaultLayout: 'main', 
+  helpers: {
+    formatDate,
+    stripHTMLTags,
+    shortenDisplay,
+  }
+}));
 app.set('view engine', '.hbs');
 app.set('views', './views');
 
