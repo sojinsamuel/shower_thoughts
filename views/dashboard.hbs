@@ -9,6 +9,7 @@
         <th>Title</th>
         <th>Date</th>
         <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,14 @@
           <td><a href="/thougts/{{_id}}">{{title}}</a></td>
           <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
           <td><span class="dash-status">{{status}}</span></td>
+          <td>
+            <a href="thoughts/edit/{{_id}}" class="btn btn-float"><i class="fas fa-edit"></i></a>
+
+            <form action="/thoughts/{{_id}}" method="POST" id="delete-form">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn red" type="submit"><i class="fas fa-trash"></i></button>
+            </form>
+          </td>
         </tr>
       {{/each}}
     </tbody>

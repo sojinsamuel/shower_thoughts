@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
+const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo');
 const connectDB = require('./config/db');
 
@@ -24,11 +25,21 @@ const app = express();
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+//method overrride
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    let method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
+
 //logging
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
 //handlebar helpers
-const { formatDate, stripHTMLTags, shortenDisplay } = require('./helpers/hbs')
+const { formatDate, stripHTMLTags, shortenDisplay, editIcon, editSelect } = require('./helpers/hbs')
 
 //handlebars
 app.engine('.hbs', exphbs.engine({ 
@@ -38,6 +49,8 @@ app.engine('.hbs', exphbs.engine({
     formatDate,
     stripHTMLTags,
     shortenDisplay,
+    editIcon,
+    editSelect,
   }
 }));
 app.set('view engine', '.hbs');
@@ -54,6 +67,12 @@ app.use(session({
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+//set global variable
+app.use((req, res, next) => {
+  res.locals.user = req.user || null
+  next()
+})
 
 //public folder
 app.use(express.static(path.join(__dirname, 'public')));
