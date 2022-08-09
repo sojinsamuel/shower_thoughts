@@ -124,4 +124,23 @@ router.delete('/:id', ensureAuth, async (req, res) => {
   }
 })
 
+/////////////////////////////
+// @descrip   Get all thoughts from one user
+// @route     GET /thoughts/user/:id
+router.get('/user/:userId', ensureAuth, async (req, res) => {
+  try {
+    const thoughts = await Thought.find({
+      user: req.params.userId,
+      status: 'public',
+    }).populate('user').lean()
+
+    res.render('thoughts/index', {
+      thoughts,
+    })
+  } catch (err) {
+    console.error(err)
+    res.render('error/500')
+  }
+})
+
 module.exports = router
