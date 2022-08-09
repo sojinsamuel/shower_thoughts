@@ -27,7 +27,7 @@ router.post('/', ensureAuth, async (req, res) => {
 
 /////////////////////////////
 // @descrip   Show All Thoughts
-// @route     POST /stories
+// @route     GET /stories
 router.get('/', ensureAuth, async (req, res) => {
   try {
     const thoughts = await Thought.find({ status: 'public' })
@@ -42,6 +42,25 @@ router.get('/', ensureAuth, async (req, res) => {
     console.error(error)
     res.render('error/500')
   }
+})
+
+/////////////////////////////
+// @descrip   Show Single Thoughts
+// @route     GET /stories/:id
+router.get('/:id', ensureAuth, async (req, res) => {
+  try {
+    const thought = await Thought.findById(req.params.id).populate('user').lean()
+
+    if(!thought) return res.render('error/404')
+
+    res.render('thoughts/show', {thought})
+  } catch (error) {
+    console.error(error)
+    res.render('error/404')
+  }
+
+
+
 })
 
 /////////////////////////////
