@@ -15,7 +15,9 @@ router.get('/', ensureGuest, (req, res) => {
 // @descrip   Dashboard
 // @route     GET /dash
 router.get('/dash', ensureAuth, (req, res) => {
-  res.render('dashboard')
+  res.render('dashboard', {
+    name: req.user.firstName,
+  })
 })
 
 
