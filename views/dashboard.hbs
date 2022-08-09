@@ -1,2 +1,26 @@
 <h1>dashboard test</h1>
 <h3>Welcome {{name}}</h3>
+<h4>Here are your thoughts</h4>
+
+{{#if thoughts}}
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each thoughts}}
+        <tr>
+          <td><a href="/thougts/{{_id}}">{{title}}</a></td>
+          <td>{{createdAt}}</td>
+          <td><span class="dash-status">{{status}}</span></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+<p>You have not created any shower thoughts yet.</p>
+{{/if}}

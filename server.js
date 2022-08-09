@@ -14,15 +14,19 @@ dotenv.config({ path: './config/config.env'})
 //passport config
 require('./config/passport')(passport)
 
+const PORT = process.env.PORT || 5000
 connectDB();
 
 
 const app = express();
 
+//body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
 //logging
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
-const PORT = process.env.PORT || 5000
 
 
 //handlebars
@@ -48,5 +52,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/thoughts', require('./routes/thoughts'))
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
