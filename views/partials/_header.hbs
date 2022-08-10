@@ -1,12 +1,36 @@
-<nav class="blue-grey darken-4">
-    <div class="nav-wrapper container">
-
-        <a href="#!" class="brand-logo center">Shower Thoughts</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="/thoughts">Public Thoughts</a></li>
-            <li><a href="/dash">Dashboard</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-        </ul>
+<header>
+    <div class="navbar-fixed">
+        <nav class="blue-grey darken-4">
+            <div class="nav-wrapper container">
+                <a href="" class="brand-logo center">
+                    <i class="fas fa-shower"></i>
+                    Shower Thoughts
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
+            </div>
+        </nav>
     </div>
-</nav>
+
+    <ul id="mobile-demo" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="https://images.unsplash.com/photo-1553025343-a831ced408b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
+                </div>
+            </div>
+        </li>
+        <li><a href="/thoughts" class="waves-effect">Public Thoughts</a></li>
+        <li><a href="/dash" class="waves-effect">Your Dashboard</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="/auth/logout" class="btn cyan darken-1">
+            <i class="fas fa-right-from-bracket right"></i>Log out</a>
+        </li>
+
+
+        {{!-- <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> --}}
+    </ul>
+</header>

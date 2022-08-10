@@ -14,9 +14,14 @@
 <body>
     {{> _header}}
     {{> _add_btn}}
-    <main class="container">
+    <main>
+    <div class="parallax-container">
+      <div class="parallax cyan"><img src="https://images.unsplash.com/photo-1523907148451-986fa7602675?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"></div>
+    </div>
       {{{body}}}
     </main>
+    {{> _footer}}
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.19.1/ckeditor.js" integrity="sha512-Ooi9IbjM2SIDjQ02ENbPFuuORT8F8Rc+rowcYfLneDwKRxw1+gVVj5tciVmV/APnA/Ys+qy1MbNKK3k2EaAHcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -24,10 +29,7 @@
     <script>
       M.Sidenav.init(document.querySelector('.sidenav'))
       M.FormSelect.init(document.querySelector('#status'))
-
-      CKEDITOR.replace('body', {
-        plugins: 'wysiwygarea, toolbar, basicstyles, link'
-      })
+      M.Parallax.init(document.querySelectorAll('.parallax'))
     </script>
 </body>
 </html>

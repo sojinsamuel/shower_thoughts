@@ -6,14 +6,14 @@ const Thought = require('../models/Thought')
 
 /////////////////////////////
 // @descrip   Show Add Page
-// @route     GET /stories/add
+// @route     GET /thoughts/add
 router.get('/add', ensureAuth, (req, res) => {
   res.render('thoughts/add')
 })
 
 /////////////////////////////
 // @descrip   Process add form
-// @route     POST /stories
+// @route     POST /thoughts
 router.post('/', ensureAuth, async (req, res) => {
   try {
     req.body.user = req.user.id
@@ -27,7 +27,7 @@ router.post('/', ensureAuth, async (req, res) => {
 
 /////////////////////////////
 // @descrip   Show All Thoughts
-// @route     GET /stories
+// @route     GET /thought
 router.get('/', ensureAuth, async (req, res) => {
   try {
     const thoughts = await Thought.find({ status: 'public' })
@@ -45,27 +45,8 @@ router.get('/', ensureAuth, async (req, res) => {
 })
 
 /////////////////////////////
-// @descrip   Show Single Thoughts
-// @route     GET /stories/:id
-router.get('/:id', ensureAuth, async (req, res) => {
-  try {
-    const thought = await Thought.findById(req.params.id).populate('user').lean()
-
-    if(!thought) return res.render('error/404')
-
-    res.render('thoughts/show', {thought})
-  } catch (error) {
-    console.error(error)
-    res.render('error/404')
-  }
-
-
-
-})
-
-/////////////////////////////
 // @descrip   Show Edit Page
-// @route     GET /stories/edit/:id
+// @route     GET /thoughts/edit/:id
 router.get('/edit/:id', ensureAuth, async (req, res) => {
   try {
     const thought = await Thought.findOne({
@@ -87,7 +68,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
 
 /////////////////////////////
 // @descrip   Update Story
-// @route     PUT /stories/:id
+// @route     PUT /thoughts/:id
 router.put('/:id', ensureAuth, async (req, res) => {
   try{
     let thought = await Thought.findById(req.params.id).lean()
@@ -113,7 +94,7 @@ router.put('/:id', ensureAuth, async (req, res) => {
 
 /////////////////////////////
 // @descrip   Delete Story
-// @route     DELETE /stories/:id
+// @route     DELETE /thoughts/:id
 router.delete('/:id', ensureAuth, async (req, res) => {
   try {
     await Thought.remove({_id: req.params.id})

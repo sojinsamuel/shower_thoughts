@@ -1,5 +1,11 @@
 body {
-  background-color: aquamarine;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 p {
@@ -11,9 +17,28 @@ p {
   margin-top: 50px;
   text-align: center;
 }
-
+.user-view {
+  min-height: 5rem !important;
+}
+.user-accent {
+  background-color: pink;
+  border-bottom: 2px solid red;
+}
+.user-accent img {
+  width: 30%;
+}
 .fa-small {
   font-size: 1rem !important;
+}
+
+.fixed-action-btn {
+  margin-bottom: 3rem !important;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn-float {
@@ -23,4 +48,52 @@ p {
 
 .img-small {
   width: 180px;
+}
+
+.parallax-container {
+  height: 5rem;
+}
+
+.parallax::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: inherit;
+  opacity: 0.2;
+  z-index: 9;
+}
+
+.grid-row{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+@media screen and (min-width: 600px){
+  .grid-row{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 992px){
+  .grid-row{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card-accent{
+  height: 2rem;
+  border-radius: 4px 4px 0 0;
+}
+
+.card-header{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 1rem;
+  align-items: end;
+  padding: 0 24px;
+  margin-top: -1rem;
+  margin-bottom: -12px;
 }
