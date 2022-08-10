@@ -8,12 +8,12 @@ const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo');
-const connectDB = require('./config/db');
+const connectDB = require('./db/db');
 
 //load config
 dotenv.config({ path: './config/config.env'})
 //passport config
-require('./config/passport')(passport)
+require('./db/passport')(passport)
 
 const PORT = process.env.PORT || 5000
 connectDB();
@@ -82,4 +82,4 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/thoughts', require('./routes/thoughts'))
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV || 'production'} mode on port ${PORT}`))
