@@ -1,0 +1,32 @@
+<section class="container">
+    <h4>Public Thoughts</h4>
+    <p>Here you can see all the public thoughts users have added. When logged in, you will be able to filter to see more from a specific user.</p>
+
+    <section class="section">
+        <section class="grid-row">
+            {{#each thoughts}}
+            <article>
+                <section class="card">
+                    <div class="card-image">
+                        {{{editIcon user ../user _id}}}
+                    </div>
+                    <div class="card-accent cyan">
+                    </div>
+                    <div class="card-header">
+                        <img src="{{user.image}}" class="circle responsive-img cyan" referrerpolicy="no-referrer">
+                        <h6>{{user.firstName}} {{user.lastName.[0]}}{{#if user.lastName}}.{{/if}}</h6>
+                    </div>
+                    <div class="card-content">
+                        <h5>{{title}}</h5>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="/thoughts/user/{{user._id}}" class="btn grey lighten-2 grey-text text-darken-2">More from {{user.firstName}}</a>
+                    </div>
+                </section>
+            </article>
+            {{else}}
+            <p>No thoughts to display</p>
+            {{/each}}
+        </section>
+    </section>
+</section>

@@ -18,6 +18,15 @@ router.get('/google/callback',
 )
 
 /////////////////////////////
+// @descrip   Auth with anonymous
+// @route     GET /auth/guest
+router.get('/guest', passport.authenticate( 'anonymous', { session: false }),
+  (req, res) => {
+    res.redirect('/guest')
+  });
+
+
+/////////////////////////////
 // @descrip   logout user
 // @route     GET /auth/logout
 router.get('/logout', (req, res) => {
