@@ -16,7 +16,7 @@ module.exports = {
     return str
   },
   editIcon: function(thoughtUser, loggedUser, thoughtID, floating = true) {
-     return thoughtUser._id.toString() === loggedUser._id.toString() ?
+     return loggedUser && thoughtUser._id.toString() === loggedUser._id.toString() ?
       floating ? 
         `<a href="/thoughts/edit/${thoughtID}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>` :
         `<a href="/thoughts/edit/${thoughtID}"><i class="fas fa-edit"></i></a>` :

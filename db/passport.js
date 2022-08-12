@@ -1,4 +1,5 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const AnonymousStrategy = require('passport-anonymous').Strategy;
 const mongoose = require('mongoose')
 const User = require('../models/User')
 
@@ -34,6 +35,8 @@ module.exports = function (passport) {
       }
     )
   )
+
+  passport.use(new AnonymousStrategy())
 
   passport.serializeUser((user, done) => {
     done(null, user.id)

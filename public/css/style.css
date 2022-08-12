@@ -97,3 +97,10 @@ p {
   margin-top: -1rem;
   margin-bottom: -12px;
 }
+
+.header-logo {
+  margin-left: 1rem;
+}
+.space {
+  margin-top: 1rem;
+}

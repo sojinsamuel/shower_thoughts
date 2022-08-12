@@ -1,0 +1,49 @@
+
+<section>
+  <section class="container">
+    <h4>Hello, Guest Viewer</h4>
+
+    <p>Once you login, here is where you would be able to see all of they public and private thoughts you have created. If you visit the menu in the top left corner, you can view the public thoughts other people have shared.</p>
+    
+    <section class="section">
+      <table class="striped">
+        <h5>Your Thoughts</h5>
+        <thead>
+          <tr>
+            <th>Thought</th>
+            <th>Date Added</th>
+            <th>Visibility</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+             <tr>
+              <td>Public Sample Thought</td>
+              <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
+              <td><span class="dash-status">public</span></td>
+              <td>
+                <span class="btn-group">
+                  <a href="" class="btn"><i class="fas fa-edit"></i></a>
+                  <a href="" class="btn red"><i class="fas fa-trash"></i></a>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Private Sample Thought</td>
+              <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
+              <td><span class="dash-status">private</span></td>
+              <td>
+                <span class="btn-group">
+                  <a href="" class="btn"><i class="fas fa-edit"></i></a>
+                  <a href="" class="btn red"><i class="fas fa-trash"></i></a>
+                </span>
+              </td>
+            </tr>
+
+        </tbody>
+      </table>
+
+    </section>
+  </section>
+</section>
+

@@ -29,7 +29,4 @@ router.get('/dash', ensureAuth, async (req, res) => {
   }
 })
 
-
-
-
 module.exports = router
