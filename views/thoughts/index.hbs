@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-header">
                         <img src="{{user.image}}" class="circle responsive-img cyan" referrerpolicy="no-referrer">
-                        <h6>{{user.displayName}}</h6>
+                        <h6>{{user.firstName}} {{user.lastName.[0]}}{{#if user.lastName}}.{{/if}}</h6>
                     </div>
                     <div class="card-content">
                         <h5>{{title}}</h5>
