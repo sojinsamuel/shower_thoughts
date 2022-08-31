@@ -22,7 +22,7 @@ This site allows you to write and share publicly your "shower thoughts" with oth
 - Express: Web framework for Node
 - MongoDB Atlas, Mongoose: Cloud database
 - Handlebars: Templating language
-- Passport Google OAuth & Anonymouse: Authentication
+- Passport Google OAuth & Anonymous: Authentication
 
 ## 📚 Lessons Learned
 
